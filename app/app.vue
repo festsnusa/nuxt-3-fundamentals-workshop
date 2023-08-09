@@ -1,41 +1,31 @@
 <script setup>
-import { computed, ref } from 'vue'
-
-let photoGallery = ref([])
-
-const numberOfPhotos = computed(() => {
-  return photoGallery.value.length
-})
-
-const evenAlbums = computed(() => {
-  return photoGallery.value.filter(item => item.albumId % 2 === 0)
-})
-
-const oddAlbums = computed(() => {
-  return photoGallery.value.filter(item => !(item.albumId % 2 === 0))
-})
-
-function fetchPhotoGallery() {
-  fetch('https://jsonplaceholder.typicode.com/photos')
-    .then(response => response.json())
-    .then(json => {
-      photoGallery.value = json
-    })
-}
+import PhotoGallery from './components/PhotoGallery.vue'
+import TodoViewer from './components/TodoViewer.vue'
 </script>
 
 <template>
-  <h1>Photo Gallery</h1>
-  <button @click="fetchPhotoGallery">Fetch Data</button>
-  <p>
-    {{ numberOfPhotos }} photos ({{ oddAlbums.length }} odd albums |
-    {{ evenAlbums.length }} even albums)
-  </p>
-  <ul>
-    <li v-for="photo in photoGallery" :key="`photo-id-${photo.id}`">
-      <img :src="photo.thumbnailUrl" />
-    </li>
-  </ul>
+  <div class="container">
+    <div class="section">
+      <div class="columns">
+        <div class="column">
+          <PhotoGallery />
+        </div>
+        <div class="column">
+          <TodoViewer title="Hi!">
+            <template v-slot:hero>
+              <h2>This works!</h2>
+              <img src="./public/todo.jpg" alt="todo">
+            </template>
+            <template v-slot:metrics="slotProps">
+              <strong>{{ slotProps.completed.length }} items completed</strong>
+              <h3>This worked!</h3>
+            </template>
+          </TodoViewer>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </template>
 
 <style></style>
