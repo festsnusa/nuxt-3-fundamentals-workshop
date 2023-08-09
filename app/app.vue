@@ -1,6 +1,6 @@
 <script setup>
-import PhotoGallery from './components/PhotoGallery'
-import TodoViewer from './components/TodoViewer'
+// import PhotoGallery from './components/PhotoGallery'
+// import TodoViewer from './components/TodoViewer'
 </script>
 
 <template>
