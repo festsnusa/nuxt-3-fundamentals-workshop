@@ -8,6 +8,8 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "3.0.0-rc.8"
+    "nuxt": "3.0.0-rc.8",
+    "sass": "^1.64.2",
+    "sass-loader": "^10.4.1"
   }
 }
