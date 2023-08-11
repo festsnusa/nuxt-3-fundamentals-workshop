@@ -9,6 +9,7 @@
   <div class="container">
     <div class="section">
       <h1>Display</h1>
+      <!-- <NuxtPage /> -->
     </div>
   </div>
 </template>
