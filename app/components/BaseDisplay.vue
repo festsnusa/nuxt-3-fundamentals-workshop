@@ -17,11 +17,12 @@ const itemType = route.path.split('/')[2]
 
 const emit = defineEmits(['update:itemList'])
 
-fetch(`https://jsonplaceholder.typicode.com/${itemType}`)
-  .then(response => response.json())
-  .then(json => {
-    emit('update:itemList', json)
-  })
+useAsyncData(`${itemType}Query`, () => {
+  $fetch(`https://jsonplaceholder.typicode.com/${itemType}`)
+    .then(response => {
+      emit('update:itemList', response)
+    })
+})
 
 </script>
 
